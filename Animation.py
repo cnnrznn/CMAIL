@@ -47,7 +47,6 @@ class Animator :
 	# text animation
 	#
 	def BeginConnectText(self, window, x, y,colorAttr1, colorAttr2):
-		_killthread = False
 		th0 = threading.Thread(target=self.ConnectText, args=(window, x, y, colorAttr1, colorAttr2))
 		th0.start()
 
