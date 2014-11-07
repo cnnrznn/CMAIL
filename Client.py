@@ -212,6 +212,7 @@ class Client :
 					self.prevwin.addstr(pl, 0, str(ct+1) + ": " + m)
 				ct += 1
 				pl += 2
+				# (todo) is this check necessary?
 				if ((len(m)+3)/(self.width/3) > 0):
 					pl += (len(m)+3)/(self.width/3)
 		except:
