@@ -90,6 +90,7 @@ class Client :
 	def DoLogin(self) :
 		self.DoResetWin()
 		if (self.loginwin == None):
+			# (todo) move newwin's to init()
 			self.loginwin = curses.newwin(11, 50, self.height/2-5, self.width/2-25)
 		curses.curs_set(2)
 		self.username = ""
@@ -165,8 +166,10 @@ class Client :
 	def DoRead(self) :
 		self.DoResetWin()
 		if (self.prevwin == None):
+			# (todo) move newwin's to init()
 			self.prevwin = curses.newwin(self.height-2, self.width/3, 1, 1)
 		if (self.messwin == None):
+			# (todo) move newwin's to init()
 			self.messwin = curses.newwin(self.height-2, self.width-(self.width/3)-3, 1, self.width/3+2)
 		self.win.attron(curses.color_pair(cpf))
 		self.win.vline(1, self.width/3+1, curses.ACS_VLINE, self.height-2)
