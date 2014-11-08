@@ -16,8 +16,6 @@ cpv = 4
 class Client :
 
 	def init(self) :
-		self.prevwin = None
-		self.messwin = None
 		self.cont = None
 		self.username = None
 		self.password = None
