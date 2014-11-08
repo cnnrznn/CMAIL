@@ -16,7 +16,6 @@ cpv = 4
 class Client :
 
 	def init(self) :
-		self.loginwin = None
 		self.prevwin = None
 		self.messwin = None
 		self.cont = None
@@ -25,6 +24,9 @@ class Client :
 		self.animator = Animation.Animator()
 		self.mode = Mode.login
 		self.win = curses.initscr()
+		self.loginwin = curses.newwin(11, 50, self.height/2-5, self.width/2-25)
+		self.prevwin = curses.newwin(self.height-2, self.width/3, 1, 1)
+		self.messwin = curses.newwin(self.height-2, self.width-(self.width/3)-3, 1, self.width/3+2)
 		self.width = self.win.getmaxyx()[1]
 		self.height = self.win.getmaxyx()[0]
 		curses.noecho()
@@ -89,9 +91,6 @@ class Client :
 
 	def DoLogin(self) :
 		self.DoResetWin()
-		if (self.loginwin == None):
-			# (todo) move newwin's to init()
-			self.loginwin = curses.newwin(11, 50, self.height/2-5, self.width/2-25)
 		curses.curs_set(2)
 		self.username = ""
 		self.password = ""
@@ -165,12 +164,6 @@ class Client :
 
 	def DoRead(self) :
 		self.DoResetWin()
-		if (self.prevwin == None):
-			# (todo) move newwin's to init()
-			self.prevwin = curses.newwin(self.height-2, self.width/3, 1, 1)
-		if (self.messwin == None):
-			# (todo) move newwin's to init()
-			self.messwin = curses.newwin(self.height-2, self.width-(self.width/3)-3, 1, self.width/3+2)
 		self.win.attron(curses.color_pair(cpf))
 		self.win.vline(1, self.width/3+1, curses.ACS_VLINE, self.height-2)
 		self.win.attroff(curses.color_pair(cpf))
