@@ -22,11 +22,11 @@ class Client :
 		self.animator = Animation.Animator()
 		self.mode = Mode.login
 		self.win = curses.initscr()
+		self.width = self.win.getmaxyx()[1]
+		self.height = self.win.getmaxyx()[0]
 		self.loginwin = curses.newwin(11, 50, self.height/2-5, self.width/2-25)
 		self.prevwin = curses.newwin(self.height-2, self.width/3, 1, 1)
 		self.messwin = curses.newwin(self.height-2, self.width-(self.width/3)-3, 1, self.width/3+2)
-		self.width = self.win.getmaxyx()[1]
-		self.height = self.win.getmaxyx()[0]
 		curses.noecho()
 		curses.raw()
 		curses.curs_set(0)
@@ -203,9 +203,7 @@ class Client :
 					self.prevwin.addstr(pl, 0, str(ct+1) + ": " + m)
 				ct += 1
 				pl += 2
-				# (todo) is this check necessary?
-				if ((len(m)+3)/(self.width/3) > 0):
-					pl += (len(m)+3)/(self.width/3)
+				pl += (len(m)+3)/(self.width/3)
 		except:
 			pass
 		self.DoDisplayMess(msgs[selected])
