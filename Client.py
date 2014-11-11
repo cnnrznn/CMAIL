@@ -185,7 +185,7 @@ class Client :
 						start -= 1
 					selected -= 1
 				elif (c == 66 and selected < len(msgs)-1):
-					if (selected == temp_num-1):
+					if (selected > temp_num-2):
 						start += 2
 					selected += 1
 
