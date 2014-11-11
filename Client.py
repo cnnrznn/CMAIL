@@ -224,3 +224,8 @@ class Client :
 			self.messwin.addstr(3,0,s)
 		except:
 			pass
+
+	def DoRenderLegend(self, mode) :
+		# (todo) render a legend 
+		#	 based on the current mode
+		pass
