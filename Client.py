@@ -24,9 +24,9 @@ class Client :
 		self.win = curses.initscr()
 		self.width = self.win.getmaxyx()[1]
 		self.height = self.win.getmaxyx()[0]
-		self.loginwin = curses.newwin(11, 50, self.height/2-5, self.width/2-25)
-		self.prevwin = curses.newwin(self.height-2, self.width/3, 1, 1)
-		self.messwin = curses.newwin(self.height-2, self.width-(self.width/3)-3, 1, self.width/3+2)
+		self.loginwin = curses.newwin(11, 50, int(self.height/2-5), int(self.width/2-25))
+		self.prevwin = curses.newwin(self.height-2, int(self.width/3), 1, 1)
+		self.messwin = curses.newwin(self.height-2, int(self.width-(self.width/3)-3), 1, int(self.width/3+2))
 		curses.noecho()
 		curses.raw()
 		curses.curs_set(0)
@@ -57,9 +57,9 @@ class Client :
 		self.DoResetWin()
 		x = self.width / 2
 		m = "  Welcome to CMAIL!  "
-		Animation.OutwardSpawnText(self.win, x, self.height/2-1, m, curses.color_pair(cpb))
+		Animation.OutwardSpawnText(self.win, int(x), int(self.height/2-1), m, curses.color_pair(cpb))
 		m = " Press any key to continue... "
-		Animation.OutwardSpawnText(self.win, x, self.height/2+1, m, curses.color_pair(cpb))
+		Animation.OutwardSpawnText(self.win, int(x), int(self.height/2+1), m, curses.color_pair(cpb))
 
 	def DoMainLoop(self) :
 		self.DoResetWin()
