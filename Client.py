@@ -163,7 +163,7 @@ class Client :
 	def DoRead(self) :
 		self.DoResetWin()
 		self.win.attron(curses.color_pair(cpf))
-		self.win.vline(1, self.width/3+1, curses.ACS_VLINE, self.height-2)
+		self.win.vline(1, int(self.width/3+1), curses.ACS_VLINE, self.height-2)
 		self.win.attroff(curses.color_pair(cpf))
 		self.DoRefreshWin(self.win)
 		num_messages = 20
@@ -203,7 +203,7 @@ class Client :
 					self.prevwin.addstr(pl, 0, str(ct+1) + ": " + m)
 				ct += 1
 				pl += 2
-				pl += (len(m)+3)/(self.width/3)
+				pl += int((len(m)+3)/(self.width/3))
 		except:
 			pass
 		self.DoDisplayMess(msgs[selected])
