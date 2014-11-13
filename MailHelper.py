@@ -6,7 +6,7 @@
 #               smtp servers
 #====================================================
 
-import imaplib,email,smtplib
+import imaplib,email,smtplib, sys
 from email.mime.text import MIMEText
 
 class MailHelper:
@@ -57,6 +57,9 @@ class MailHelper:
 		msgs = []
 		for i in range(1,num+1):
 			res, data = self.IMAP_SERVER.uid("FETCH", uids[-i], "(BODY[])")
-			msg = email.message_from_string(data[0][1])
+			if (sys.version_info < (3,0,0)):
+				msg = email.message_from_string(data[0][1])
+			else:
+				msg = email.message_from_bytes(data[0][1])
 			msgs.append(msg)
 		return(msgs)
