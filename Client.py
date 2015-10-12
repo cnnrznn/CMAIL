@@ -47,19 +47,22 @@ class Client :
 
 	def Stop(self) :
 		self.win.erase()
-		self.win.addstr(5,5, " Program Terminated: Press any key to finish. ", curses.color_pair(cpr))
-		self.DoRefreshWin(self.win)
+                x = int(self.width/2)
+                y = int(self.height/2)
+                m = "Program Terminated: Press any key to finish."
+                Animation.OutwardSpawnText(self.win, x, y, m, curses.color_pair(cpr))
 		self.win.getch()
 		curses.endwin()
 		# (todo) put other cleanup here
 
 	def DoSplashScreen(self):
 		self.DoResetWin()
-		x = self.width / 2
+		x = int(self.width/2)
+                y = int(self.height/2-1)
 		m = "  Welcome to CMAIL!  "
-		Animation.OutwardSpawnText(self.win, int(x), int(self.height/2-1), m, curses.color_pair(cpb))
+		Animation.OutwardSpawnText(self.win, x, y, m, curses.color_pair(cpb))
 		m = " Press any key to continue... "
-		Animation.OutwardSpawnText(self.win, int(x), int(self.height/2+1), m, curses.color_pair(cpb))
+		Animation.OutwardSpawnText(self.win, x, y+2, m, curses.color_pair(cpb))
 
 	def DoMainLoop(self) :
 		self.DoResetWin()
